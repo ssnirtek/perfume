@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "7a55651f-471b-4ae3-9b7a-f6cf849bdb08",
+		"name": "fragrances",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39933952"
+	},
+	"item": [
+		{
+			"name": "регистрация",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"fio\": \"Константинова Алина Петрова\",\r\n            \"phone\": \"8(237)797-55-44\",\r\n            \"email\":\"ks@gmail.com\",\r\n            \"password\": \"ks1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/register",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Аутентификация",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"email\":\"and1@gmail.com\",\n            \"password\": \"and1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/login",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "создание заказа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Aku4Q0tIUOSIxwDJ6P610RZjmvzNmQuM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fragrances_id\": 1,\r\n  \"adress\": \"г. Москва, ул. Примерная, д. 10, кв. 25\",\r\n  \"pay_metod\": \"Card\",\r\n  \"comment\": \"Позвонить за час до доставки\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/orders",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Поиск по айди аромат",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/fragrances/1",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"fragrances",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "поиск аромата по категориям",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/fragrances?gender=Female",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"fragrances"
+					],
+					"query": [
+						{
+							"key": "gender",
+							"value": "Female"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "поиск отзыва по аромату",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/posts?fragrances_id=1",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"posts"
+					],
+					"query": [
+						{
+							"key": "fragrances_id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Создание отзыва",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "Aku4Q0tIUOSIxwDJ6P610RZjmvzNmQuM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fragrances_id\": 1,\r\n  \"raiting\": 4,\r\n  \"text\": \"Отличный аромат, держит-ся долго, но немного резковат в начальных нотах\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/posts",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "статус заказа",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "N7uUw93Ll6QIAlUd0-cnj-RvEWEWGjMf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"status\": \"Sent\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/orders/1/update-status",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"orders",
+						"1",
+						"update-status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Конкретный отзыв",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "vLnCm1SIn43tC1tIwC0aqgTAbg7VLF3m",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/posts/1",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "создание аромата",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "OYYXdkwN7149DhO2IcrB4J9u6SBGhOPY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_name\": \"Chanel No. 5\",\r\n \"category_id\": 1,\r\n\"description\": \"Классический цветоч-ный аромат с нотами жасмина и ро-зы\",\r\n\"price\": 7500.00,\r\n\"volume_ml\": 100,\r\n\"gender\": \"Female\",\r\n\"image_f\": \"/images/chanel-no5.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://k-sisoeva.xn--80ahdri7a.site/admin/fragrances",
+					"protocol": "https",
+					"host": [
+						"k-sisoeva",
+						"xn--80ahdri7a",
+						"site"
+					],
+					"path": [
+						"admin",
+						"fragrances"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
